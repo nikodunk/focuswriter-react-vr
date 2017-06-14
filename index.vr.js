@@ -62,13 +62,15 @@ export default class Main extends React.Component {
     ];
     this.state = {
       spacedOut: true,
-      content: 'It is a period of civil wars in the galaxy.  A brave alliance of underground freedom fighters has challenged the tyranny and oppression of the awesome GALACTIC EMPIRE. Striking from a fortress hidden among the billion stars of the galaxy, rebel spaceships have won their first victory in a battle with the powerful Imperial Starfleet.  The EMPIRE fears that another defeat could bring a thousand more solar systems into the rebellion, and Imperial control over the galaxy would be lost forever. To crush the rebellion once and for all, the EMPIRE is constructing a sinister new battle station.  Powerful enough to destroy an entire planet, its completion spells certain doom for the champions of freedom. \r \r Welcome to Writespace! \r Type to continue...\r \r\r'
+      newDoc: true,
+      content: 'It is a period of civil wars in the galaxy.  A brave alliance of underground freedom fighters has challenged the tyranny and oppression of the awesome GALACTIC EMPIRE. Striking from a fortress hidden among the billion stars of the galaxy, rebel spaceships have won their first victory in a battle with the powerful Imperial Starfleet.  The EMPIRE fears that another defeat could bring a thousand more solar systems into the rebellion, and Imperial control over the galaxy would be lost forever. To crush the rebellion once and for all, the EMPIRE is constructing a sinister new battle station.  Powerful enough to destroy an entire planet, its completion spells certain doom for the champions of freedom. \r \r Welcome to Focuswriter! – The completely distraction-free writing app. \r Type to continue...\r \r\r'
     };
     this.handleInput = this.handleInput.bind(this);
   }
 
   handleInput(e){
     var event = e.nativeEvent.inputEvent
+    if (this.state.newDoc && event.type === "KeyboardInputEvent") { this.setState({content: '', newDoc: false}) }
     if(event.type === "KeyboardInputEvent" && event.eventType === "keyup"){
       // console.log(e.nativeEvent)
       if( event.key === "Backspace"){
